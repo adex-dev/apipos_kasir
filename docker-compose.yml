@@ -1,0 +1,11 @@
+version: "2"
+
+services:
+  apipos:
+    container_name: apipos
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8022:8022"
