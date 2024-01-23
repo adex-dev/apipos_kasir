@@ -12,10 +12,14 @@ func Routes(c *fiber.App) {
 	//auth
 	app.Post("auth/cekuser", authcontrollers.Loginauth)
 	app.Post("loadsales", mastercontrollers.Loadsales)
+	//master
 	app.Get("pagination", mastercontrollers.Pagination)
+	app.Get("/outlet", mastercontrollers.Storeshow)
 	//isoide
 	isoide := app.Group("/isoide")
 	isoide.Get("/product", isoidecontrollers.Product)
-	isoide.Post("/outlet", isoidecontrollers.Storeisoide)
+	//isoide.Get("/kategori/", isoidecontrollers.Kategorishow)
+	isoide.Get("/kategori/:status?", isoidecontrollers.Kategori)
+	isoide.Get("/subkategori/:idsub?/:idkategori?", isoidecontrollers.Subkategori)
 
 }

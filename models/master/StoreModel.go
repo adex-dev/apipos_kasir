@@ -15,5 +15,8 @@ type Storelist struct {
 	Alamat        string `json:"alamat"`
 	Telp1         string `json:"telp_1"`
 	Telp2         string `json:"telp_2"`
+	Longitude     string `json:"longitude"`
+	Latitude      string `json:"latitude"`
+	Thumbnail     string `json:"thumbnail"`
 	Nama_user     string `json:"nama_user"`
 }

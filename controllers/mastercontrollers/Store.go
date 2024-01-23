@@ -1,14 +1,12 @@
-package isoidecontrollers
+package mastercontrollers
 
 import (
 	"apipos/resources/Master"
 	"github.com/gofiber/fiber/v2"
 )
 
-func Storeisoide(c *fiber.Ctx) error {
-	brands := "ISOIDE"
-	status := c.FormValue("status")
-	store, err := Master.StoreResources(brands, status)
+func Storeshow(c *fiber.Ctx) error {
+	store, err := Master.StoreResources(c)
 	if err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"message": err.Error(),
@@ -21,16 +19,8 @@ func Storeisoide(c *fiber.Ctx) error {
 			"respon":  401,
 		})
 	}
-	var response []map[string]interface{}
-	for _, store := range store {
-		storeMap := map[string]interface{}{
-			"id_outlet":   store.Idoutlet,
-			"nama_outlet": store.Namaoutlet,
-		}
-		response = append(response, storeMap)
-	}
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{
-		"data":   response,
+		"data":   store,
 		"respon": 200,
 	})
 }

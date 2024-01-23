@@ -14,7 +14,7 @@ func ProductResource(c *fiber.Ctx) error {
 		FROM plu_items
 		INNER JOIN kategori ON kategori.id_kategori = plu_items.itemKategory
 		INNER JOIN subkategori ON subkategori.id_subitem = plu_items.itemSub
-		INNER JOIN pos_master.users ON users.nik = plu_items.create_ons
+		INNER JOIN pos_master.users ON users.nik = plu_items.create_ons order by plu_items.id_item DESC 
 	`
 
 	rows, err := database.DB.Query(query)
