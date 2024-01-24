@@ -18,6 +18,7 @@ func main() {
 	database.Conndbisoide()
 	database.Connmaster()
 	database.Conndbnahm()
+	database.Conndbevent()
 	routing.Routes(app)
 	log.Fatal(app.Listen(":8022"))
 }

@@ -2,6 +2,7 @@ package routing
 
 import (
 	"apipos/controllers/authcontrollers"
+	"apipos/controllers/eventcontrollers"
 	"apipos/controllers/isoidecontrollers"
 	"apipos/controllers/mastercontrollers"
 	"apipos/controllers/nahmcontrollers"
@@ -16,6 +17,9 @@ func Routes(c *fiber.App) {
 	//master
 	app.Get("pagination", mastercontrollers.Pagination)
 	app.Get("/outlet", mastercontrollers.Storeshow)
+	app.Get("/banklist", mastercontrollers.Bank)
+	app.Get("/wallet", mastercontrollers.Wallet)
+	app.Get("/other-tender", mastercontrollers.OtherTender)
 	//isoide
 	isoide := app.Group("/isoide")
 	isoide.Get("/product", isoidecontrollers.Product)
@@ -28,4 +32,9 @@ func Routes(c *fiber.App) {
 	nahm.Get("/kategori", nahmcontrollers.Kategori)
 	nahm.Get("/subkategori", nahmcontrollers.Subkategori)
 
+	//	Event
+	event := app.Group("/event")
+	event.Get("/product", eventcontrollers.Product)
+	event.Get("/kategori", eventcontrollers.Kategori)
+	event.Get("/subkategori", eventcontrollers.Subkategori)
 }

@@ -7,7 +7,7 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
-var DB, DBNAHM, DBMASTER *sql.DB
+var DB, DBNAHM, DBEVENT, DBMASTER *sql.DB
 
 func Conndbisoide() {
 	dbConn, err := sql.Open("mysql", "adextux:adexganteng@tcp(localhost:3306)/pos_isoide")
@@ -30,6 +30,17 @@ func Conndbnahm() {
 	dbConn.SetConnMaxIdleTime(5 * time.Minute)
 	dbConn.SetConnMaxLifetime(60 * time.Minute)
 	DBNAHM = dbConn
+}
+func Conndbevent() {
+	dbConn, err := sql.Open("mysql", "adextux:adexganteng@tcp(localhost:3306)/pos_event")
+	if err != nil {
+		panic(err)
+	}
+	dbConn.SetMaxIdleConns(10)
+	dbConn.SetMaxOpenConns(100)
+	dbConn.SetConnMaxIdleTime(5 * time.Minute)
+	dbConn.SetConnMaxLifetime(60 * time.Minute)
+	DBEVENT = dbConn
 }
 func Connmaster() {
 	dbConn, err := sql.Open("mysql", "adextux:adexganteng@tcp(localhost:3306)/pos_master")
