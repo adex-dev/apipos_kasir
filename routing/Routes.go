@@ -20,11 +20,16 @@ func Routes(c *fiber.App) {
 	app.Get("/banklist", mastercontrollers.Bank)
 	app.Get("/wallet", mastercontrollers.Wallet)
 	app.Get("/other-tender", mastercontrollers.OtherTender)
+	app.Get("/cashlist", mastercontrollers.Cashlist)
 	//isoide
 	isoide := app.Group("/isoide")
 	isoide.Get("/product", isoidecontrollers.Product)
 	isoide.Get("/kategori/:status?", isoidecontrollers.Kategori)
 	isoide.Get("/subkategori/:idsub?/:idkategori?", isoidecontrollers.Subkategori)
+	isoide.Get("/promotionh", isoidecontrollers.PromotionH)
+	isoide.Get("/promotion_i", isoidecontrollers.PromotionI)
+	isoide.Get("/voucher", isoidecontrollers.Voucher)
+	isoide.Post("/disc-item-temp", isoidecontrollers.Promosi_itemp)
 
 	//	Nahm
 	nahm := app.Group("/nahm")
