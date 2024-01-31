@@ -17,6 +17,7 @@ func main() {
 	}))
 	database.Conndbisoide()
 	database.Connmaster()
+	database.Connmember()
 	database.Conndbnahm()
 	database.Conndbevent()
 	routing.Routes(app)
